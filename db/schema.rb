@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_11_19_042054) do
+ActiveRecord::Schema[8.0].define(version: 2024_11_21_044711) do
   create_table "sessions", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "ip_address"
@@ -25,6 +25,13 @@ ActiveRecord::Schema[8.0].define(version: 2024_11_19_042054) do
     t.string "password_digest", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "full_name"
+    t.string "phone"
+    t.string "designation"
+    t.string "department"
+    t.string "organization"
+    t.string "scholar_idx"
+    t.string "orchid_idx"
     t.index ["email_address"], name: "index_users_on_email_address", unique: true
   end
 

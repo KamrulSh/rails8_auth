@@ -1,0 +1,83 @@
+<h1 class="text-3xl font-bold mb-6">Register Account</h1>
+
+<%= form_with model: @user, url: register_path, local: true, class: "space-y-6" do |form| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation" class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%# Fields Section %>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+    <%# Full Name %>
+    <div class="field">
+      <%= form.label :full_name, class: "block text-gray-700 text-sm font-semibold" %>
+      <%= form.text_field :full_name, class: "mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500 shadow-sm" %>
+    </div>
+
+    <%# Email %>
+    <div class="field">
+      <%= form.label :email_address, class: "block text-gray-700 text-sm font-semibold" %>
+      <%= form.email_field :email_address, class: "mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500 shadow-sm" %>
+    </div>
+
+    <%# Password %>
+    <div class="field">
+      <%= form.label :password, class: "block text-gray-700 text-sm font-semibold" %>
+      <%= form.password_field :password, class: "mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500 shadow-sm" %>
+    </div>
+
+    <%# Password Confirmation %>
+    <div class="field">
+      <%= form.label :password_confirmation, class: "block text-gray-700 text-sm font-semibold" %>
+      <%= form.password_field :password_confirmation, class: "mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500 shadow-sm" %>
+    </div>
+
+    <%# Phone %>
+    <div class="field">
+      <%= form.label :phone, class: "block text-gray-700 text-sm font-semibold" %>
+      <%= form.text_field :phone, class: "mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500 shadow-sm" %>
+    </div>
+
+    <%# Designation %>
+    <div class="field">
+      <%= form.label :designation, class: "block text-gray-700 text-sm font-semibold" %>
+      <%= form.text_field :designation, class: "mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500 shadow-sm" %>
+    </div>
+
+    <%# Department %>
+    <div class="field">
+      <%= form.label :department, class: "block text-gray-700 text-sm font-semibold" %>
+      <%= form.text_field :department, class: "mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500 shadow-sm" %>
+    </div>
+
+    <%# Organization %>
+    <div class="field">
+      <%= form.label :organization, class: "block text-gray-700 text-sm font-semibold" %>
+      <%= form.text_field :organization, class: "mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500 shadow-sm" %>
+    </div>
+
+    <%# Scholar Index %>
+    <div class="field">
+      <%= form.label :scholar_idx, class: "block text-gray-700 text-sm font-semibold" %>
+      <%= form.text_field :scholar_idx, class: "mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500 shadow-sm" %>
+    </div>
+
+    <%# ORCID Index %>
+    <div class="field">
+      <%= form.label :orchid_idx, class: "block text-gray-700 text-sm font-semibold" %>
+      <%= form.text_field :orchid_idx, class: "mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500 shadow-sm" %>
+    </div>
+  </div>
+
+  <%# Submit Button %>
+  <div class="actions">
+    <%= form.submit "Register", class: "w-full py-3 px-4 bg-indigo-600 text-white font-semibold rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2" %>
+  </div>
+<% end %>

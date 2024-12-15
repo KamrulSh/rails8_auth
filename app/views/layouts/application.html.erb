@@ -1,46 +1,51 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= content_for(:title) || "Rails8 Auth" %></title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="mobile-web-app-capable" content="yes">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title><%= content_for(:title) || "Rails8 Auth" %></title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= yield :head %>
+  <%= yield :head %>
 
-    <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
-    <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
+  <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
+  <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
 
-    <link rel="icon" href="/icon.png" type="image/png">
-    <link rel="icon" href="/icon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/icon.png">
+  <link rel="icon" href="/icon.png" type="image/png">
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/icon.png">
 
-    <%# Includes all stylesheet files in app/assets/stylesheets %>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
-    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
-  </head>
+  <%# Includes all stylesheet files in app/assets/stylesheets %>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+  <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+  <%= javascript_importmap_tags %>
+</head>
 
- <body class="bg-gray-50 font-sans">
-  <header class="bg-white shadow-md fixed top-0 left-0 w-full">
-    <div class="container mx-auto px-5 py-4 flex items-center justify-between">
-      <nav class="flex space-x-6">
-        <%= link_to "Home", root_path, class: "text-gray-800 font-medium hover:text-blue-500 transition" %>
-        <%= link_to "Dashboard", dashboard_path, class: "text-gray-800 font-medium hover:text-blue-500 transition mr-6" %>
-        <% if authenticated? %>
+<body class="bg-gray-50 font-sans">
+<header class="bg-white shadow-md fixed top-0 left-0 w-full">
+  <div class="container mx-auto px-5 py-4 flex items-center justify-between">
+    <nav class="flex space-x-6">
+      <%= link_to "Home", root_path, class: "text-gray-800 font-medium hover:text-blue-500 transition" %>
+      <%= link_to "Dashboard", dashboard_path, class: "text-gray-800 font-medium hover:text-blue-500 transition mr-6" %>
+      <% if authenticated? %>
+        <div class="font-medium text-gray-800">
           <%= Current.user.email_address %>
-          <%= button_to "Sign out", session_path, method: :delete, class: "bg-red-500 text-white font-medium py-2 px-4 rounded shadow hover:bg-red-600 transition duration-300 ease-in-out" %>
-        <% end %>
-      </nav>
-    </div>
-    <hr class="border-gray-200">
-  </header>
+        </div>
+        <%= button_to "Sign out", session_path, method: :delete, class: "bg-red-500 text-white font-medium py-2 px-4 rounded shadow hover:bg-red-600 transition duration-300 ease-in-out" %>
+      <% else %>
+        <%= link_to "Login", sign_in_path, class: "text-gray-800 font-medium hover:text-blue-500 transition" %>
+        <%= link_to "Register", register_path, class: "text-gray-800 font-medium hover:text-blue-500 transition" %>
+      <% end %>
+    </nav>
+  </div>
+  <hr class="border-gray-200">
+</header>
 
-  <main class="container mx-auto mt-28 px-5 py-10">
-    <%= yield %>
-  </main>
+<main class="container mx-auto mt-10 px-5 py-10">
+  <%= yield %>
+</main>
 </body>
 </html>
