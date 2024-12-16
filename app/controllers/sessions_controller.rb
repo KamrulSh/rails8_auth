@@ -27,5 +27,4 @@ class SessionsController < ApplicationController
       redirect_to root_path, alert: "You are already logged in."
     end
   end
-
 end
