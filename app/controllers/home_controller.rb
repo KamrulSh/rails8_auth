@@ -4,5 +4,6 @@ class HomeController < ApplicationController
   end
 
   def dashboard
+    redirect_to sign_in_url unless authenticated?
   end
 end
